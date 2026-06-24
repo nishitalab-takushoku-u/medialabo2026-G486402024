@@ -1,0 +1,45 @@
+body {
+  background-color: #fffded;
+}
+
+li {
+    list-style-type: none;
+    border-bottom-style: groove;
+    color: #ff9c9c;
+}
+.uhuhu {
+    background-color: #ff9c9c;
+    padding: 15px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+	margin-left: 0px;
+    text-shadow:
+    1px 1px 1px rgb(255, 255, 255),
+    2px 2px 1px rgb(255, 255, 255);
+}
+
+h1 {
+    text-align: center;
+    border-bottom: 10px dotted rgb(195, 195, 195);
+    margin-bottom: 40px;
+}
+
+.hohoho {
+    color: rgb(0, 0, 255);
+    padding-left: 20px;
+}
+
+h2 {
+    background: linear-gradient(to left ,#fffded, rgb(255, 220, 145));
+    padding: 5px;
+}
+
+.day {
+    color: rgb(188, 188, 188);
+}
+
+div#popo {
+    background-color: #ffffff;
+    padding: 5px;
+    width: 1600px;
+}
