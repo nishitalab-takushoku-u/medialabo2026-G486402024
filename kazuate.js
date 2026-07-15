@@ -9,8 +9,9 @@ let kaisu = 0;
 
 // そのほか，必要に応じて変数を宣言してもよい
 let i = document.querySelector('input[name="kaito"]');
-i.getAttribute('kaito');
 let p2 = document.querySelector('span#kaisu'); 
+let p = document.querySelector('p#result'); 
+let owari = 0;
 
 // ボタンを押した後の処理をする関数 hantei() の定義
 function hantei() {
@@ -27,15 +28,23 @@ function hantei() {
   // ここまで: テキストボックスに指定された数値を yoso に代入する
   // ここから: 正解判定する
   // 　　　　  正解/不正解のときのメッセージを表示する
-  if(yoso = kotae){
-    console.log(正解です．おめでとう!);
-    break;
-  }
+  if (owari >= 1 || kaisu > 3) {
+    p.textContent = "答えは " + kotae + " でした．すでにゲームは終わっています";
+    return;
+    }
+  if(yoso == kotae){
+    p.textContent = ("正解ですおめでとう!");
+    owari = owari + 1;
+  }else if(yoso < kotae){
+    p.textContent = ("まちがい．答えはもっと大きいですよ");
+  }else {
+    p.textContent = ("まちがい．答えはもっと小さいですよ");
+}
   // ここまで: 正解判定する
 }
 
 // ここから: ボタンを押した時のイベントハンドラとして hantei を登録
-let b = document.querySelector('button#calk');
+let b = document.querySelector('button#calc');
 b.addEventListener('click', hantei);
 
 // ここまで: ボタンを押した時のイベントハンドラとして hantei を登録
