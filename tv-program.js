@@ -10,11 +10,39 @@ function print(data) {
     console.log(n.content);
     console.log(n.act);
   } 
+  let k = document.createElement('p class="hohoho"');
+let k = document.createElement('p');
+for(let n of data.list.g1){
+    console.log(n.start_time);
+    console.log(n.end_time);
+    console.log(n.service.name);
+    console.log(n.title);
+    console.log(n.subtitle);
+    console.log(n.content);
+    console.log(n.act);
+    l.textContent = n.start_time;
+    u.insertAdjacentElement('afterend', body);
+    l.textContent = n.end_time;
+    u.insertAdjacentElement('afterend', body);
+    l.textContent = n.service.name;
+    u.insertAdjacentElement('afterend', body);
+    l.textContent = n.title;
+    u.insertAdjacentElement('afterend', body);
+    l.textContent = n.start_time;
+    u.insertAdjacentElement('afterend', body);
+    let l = document.createElement('p');
+	  let u = document.querySelector('h2#addr');
+	  u.insertAdjacentElement('afterend', l);
+  	l.textContent = campus.address;
+}
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
-
+  let l = document.createElement('div');
+  l.setAttribute('id', 'result');
+  let u = document.querySelector('body');
+  u.insertAdjacentElement('beforeend', l)
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
@@ -24,12 +52,30 @@ function printDom(data) {
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+let url = 'https://www.nishita-lab.org/web-contents/jsons/nhk/g1-0502-j.json';
 
+    // 通信開始
+    axios.get(url)
+        .then(showResult)   // 通信成功
+        .catch(showError)   // 通信失敗
+        .then(finish);
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
+// サーバから送られてきたデータを出力
+    let data = resp.data;
 
+    // data が文字列型なら，オブジェクトに変換する
+    if (typeof data === 'string') {
+        data = JSON.parse(data);
+    }
+
+    // data をコンソールに出力
+    console.log(data);
+
+    // data.x を出力
+    console.log(data.x);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理

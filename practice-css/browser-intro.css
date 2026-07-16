@@ -13,8 +13,6 @@ h1 {
 }
 
 h2 {
-	margin-top: 10px;
-	margin-left: 10px;
 	font-family: "cursive"  ;
 	color: #3f3faf;
 	background: linear-gradient(to left ,#ffefaf, white);
@@ -32,7 +30,7 @@ div#zentai {
 
 div#zentai > div {
 	background-color: #ffefaf;
-
+	padding: 0px 5px 5px 5px;
 }
 
 img {

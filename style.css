@@ -1,5 +1,5 @@
 body {
-  background-color: #FAFAFC;
+  background-color: #fffcfa;
 }
 * {
   color: navy;
@@ -45,6 +45,20 @@ div#ni {
 
 div#san {
   background-color: #fffddc;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+div#yon {
+  background-color: #dcffe8;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+div#go {
+  background-color: #dcf3ff;
   padding: 25px;
   border-radius: 10px;
   margin-bottom: 30px;
