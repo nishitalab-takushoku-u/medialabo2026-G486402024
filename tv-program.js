@@ -9,50 +9,91 @@ function print(data) {
     console.log(n.subtitle);
     console.log(n.content);
     console.log(n.act);
-  } 
-  let k = document.createElement('p class="hohoho"');
-let k = document.createElement('p');
-for(let n of data.list.g1){
-    console.log(n.start_time);
-    console.log(n.end_time);
-    console.log(n.service.name);
-    console.log(n.title);
-    console.log(n.subtitle);
-    console.log(n.content);
-    console.log(n.act);
-    l.textContent = n.start_time;
-    u.insertAdjacentElement('afterend', body);
-    l.textContent = n.end_time;
-    u.insertAdjacentElement('afterend', body);
-    l.textContent = n.service.name;
-    u.insertAdjacentElement('afterend', body);
-    l.textContent = n.title;
-    u.insertAdjacentElement('afterend', body);
-    l.textContent = n.start_time;
-    u.insertAdjacentElement('afterend', body);
-    let l = document.createElement('p');
-	  let u = document.querySelector('h2#addr');
-	  u.insertAdjacentElement('afterend', l);
-  	l.textContent = campus.address;
-}
+  }
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+
+  let kesu = document.querySelector('div#result');
+  if (kesu) {
+    kesu.remove();
+  }
+
   let l = document.createElement('div');
   l.setAttribute('id', 'result');
+
   let u = document.querySelector('body');
   u.insertAdjacentElement('beforeend', l)
+
+  let k = document.createElement('p');
+  k.setAttribute('class', 'hohoho');
+  k.textContent = '検索結果は' + data.list.g1.length + '件';
+
+  l.insertAdjacentElement('beforeend',k);
+
+  let i = 1;
+
+  for (let n of data.list.g1) {
+
+    let p = document.createElement('p');
+    p.textContent = '　';
+    l.insertAdjacentElement('beforeend', p);
+
+    let li = document.createElement('li');
+    li.textContent = '検索結果' + i + '件目';
+    l.insertAdjacentElement('beforeend', li);
+
+    let day = document.createElement('p');
+    day.setAttribute('class', 'day');
+    day.textContent = n.start_time + '～' + n.end_time;
+    l.insertAdjacentElement('beforeend', day);
+
+    let h2 = document.createElement('h2');
+    h2.textContent = n.title;
+    l.insertAdjacentElement('beforeend', h2);
+
+    let h5 = document.createElement('h5');
+    h5.textContent = n.subtitle;
+    l.insertAdjacentElement('beforeend', h5);
+
+    p = document.createElement('p');
+    p.textContent = '　';
+    l.insertAdjacentElement('beforeend', p);
+
+    let div = document.createElement('div');
+    div.setAttribute('id', 'popo');
+    l.insertAdjacentElement('beforeend', div);
+
+    let p1 = document.createElement('p');
+    if (n.act == "") {
+      p1.textContent = "番組説明";
+    } else {
+      p1.textContent = "出演者";
+    }
+    div.insertAdjacentElement('beforeend', p1);
+
+    let p2 = document.createElement('p');
+    if (n.act == "") {
+      p2.textContent = n.content;
+    } else {
+      p2.textContent = n.act;
+    }
+    div.insertAdjacentElement('beforeend', p2);
+
+    i++;
+  }
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
 
 
-
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-let url = 'https://www.nishita-lab.org/web-contents/jsons/nhk/g1-0502-j.json';
+
+  printDom(data);
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/nhk/g1-0502-j.json';
 
     // 通信開始
     axios.get(url)
@@ -60,6 +101,10 @@ let url = 'https://www.nishita-lab.org/web-contents/jsons/nhk/g1-0502-j.json';
         .catch(showError)   // 通信失敗
         .then(finish);
 }
+
+
+let b = document.querySelector('#kensaku');
+b.addEventListener('click', sendRequest);
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
@@ -76,6 +121,8 @@ function showResult(resp) {
 
     // data.x を出力
     console.log(data.x);
+
+    printDom(data);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
