@@ -15,6 +15,14 @@ function print(data) {
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
 
+  let list;
+
+  if (data.list.g1) {
+    list = data.list.g1;
+  } else {
+    list = data.list.e1;
+  }
+
   let kesu = document.querySelector('div#result');
   if (kesu) {
     kesu.remove();
@@ -28,13 +36,13 @@ function printDom(data) {
 
   let k = document.createElement('p');
   k.setAttribute('class', 'hohoho');
-  k.textContent = '検索結果は' + data.list.g1.length + '件';
+  k.textContent = '検索結果は' + list.length + '件';
 
   l.insertAdjacentElement('beforeend',k);
 
   let i = 1;
 
-  for (let n of data.list.g1) {
+  for (let n of list) {
 
     let p = document.createElement('p');
     p.textContent = '　';
